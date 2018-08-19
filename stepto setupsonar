@@ -1,0 +1,72 @@
+1. download and configure sonarqube:
+
+     wget https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.6.6.zip
+
+  2. extract the sonarqube
+ 
+       unzip sonarqube-5.6.6.zip
+  
+  3.   # cd sonarqube/bin
+        #sonar.sh start
+
+  4. http://Hostname:9000/
+
+  mvn -f pom.xml clean install sonar:sonar
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+   2. install mysql:
+
+         http://sharadchhetri.com/2014/05/07/install-mysql-server-5-6-ubuntu-14-04-lts-trusty-tahr/
+
+       https://gist.github.com/rasheedamir/11460beef67bc6b58d61
+
+      1. sudo apt-get update
+        sudo apt-get install mysql-server-5.6
+
+     2. Create SonarQube database and user.
+		Command: mysql -u root -p < create_database.sql
+CREATE DATABASE sonar CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE USER ‘sonar’ IDENTIFIED BY ‘sonar';
+GRANT ALL ON sonar.* TO ‘sonar’@’%’ IDENTIFIED BY ‘sonar';
+GRANT ALL ON sonar.* TO ‘sonar’@’localhost’ IDENTIFIED BY ‘sonar';
+FLUSH PRIVILEGES;
+
+########
+uncommented in /etc/mysql/my.cnf and assigned to your computers IP address and not loopback
+For mysql version 5.7 and above
+uncommented in /etc/mysql/mysql.conf.d/mysqld.cnf and assigned to your computers IP address and not loopback
+#Replace xxx with your IP Address 
+bind-address        = xxx.xxx.xxx.xxx
+Or add a bind-address = 0.0.0.0 if you don't want to specify the IP
+#########
+
+/usr/share/doc/mysql-server-5.6/README.Debian
+
+Settings.xml
+
+
+ubuntu@ip-172-31-12-143:~$ cat .m2/settings.xml 
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+
+
+<profiles>
+    <profile>
+	<id>sonar</id>
+	<properties>
+          <!--sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar</sonar.jdbc.url>
+          <sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
+          <sonar.jdbc.username>sonar</sonar.jdbc.username>
+          <sonar.jdbc.password>xxxxx</sonar.jdbc.password-->
+          <!-- SERVER ON A REMOTE HOST -->
+          <sonar.host.url>http://ec2-18-216-134-16.us-east-2.compute.amazonaws.com:9000/</sonar.host.url>		
+	</properties>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>sonar</activeProfile>
+</activeProfiles>
+
+</settings>
