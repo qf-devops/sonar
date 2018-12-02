@@ -1,10 +1,9 @@
 1. download and configure sonarqube:
 
-     wget https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.6.6.zip
-
+     wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-5.6.7.zip
   2. extract the sonarqube
  
-       unzip sonarqube-5.6.6.zip
+       unzip sonarqube-5.6.7.zip
   
   3.   # cd sonarqube/bin
         #sonar.sh start
