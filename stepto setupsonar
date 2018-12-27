@@ -1,3 +1,14 @@
+0. install jdk
+
+ Install JDK8 version.
+          sudo apt-get install software-properties-common && \
+         sudo add-apt-repository ppa:webupd8team/java -y && \
+         sudo apt-get update && \
+         sudo apt-get install oracle-java8-installer -y && \
+         sudo apt-get install oracle-java8-set-default 
+         #java -version
+
+
 1. download and configure sonarqube:
 
      wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-5.6.7.zip
