@@ -33,7 +33,7 @@
         sudo apt-get install mysql-server-5.6
 
      2. Create SonarQube database and user.
-		Command: mysql -u root -p < create_database.sql
+		Command: mysql -u root -p 
 CREATE DATABASE sonar CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE USER 'sonar' IDENTIFIED BY 'sonar';
 GRANT ALL ON sonar.* TO 'sonar'@'%' IDENTIFIED BY 'sonar';
