@@ -28,7 +28,7 @@
        https://gist.github.com/rasheedamir/11460beef67bc6b58d61
 
       1. sudo apt-get update
-        sudo apt-get install mysql-server-5.6
+        sudo apt-get install mysql-server-5.7
 
      2. Create SonarQube database and user.
 		Command: mysql -u root -p 
