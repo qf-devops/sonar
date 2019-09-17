@@ -1,0 +1,25 @@
+# Postgresql install (v9.6.10)
+apt-get install -y postgresql
+su - postgres
+psql
+CREATE USER sonar ;
+ALTER USER sonar WITH PASSWORD 'PASSWORD';
+CREATE DATABASE sonardb WITH ENCODING 'UTF8';
+ALTER DATABASE sonardb OWNER TO sonar;
+ALTER USER sonar SET search_path TO sonardb;
+
+# Sonar install
+apt-get install -y unzip
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.6.zip
+unzip sonarqube-7.6.zip
+mv sonarqube-7.6 /opt/sonarqube
+
+# Add sonar user
+adduser sonar
+chown -R sonar /opt/sonarqube
+
+And finally add the postgresql conf in /opt/sonarqube/conf/sonar.properties :
+
+sonar.jdbc.username=sonar
+sonar.jdbc.password=PASSWORD
+sonar.jdbc.url=jdbc:postgresql://localhost:5432/sonardb
