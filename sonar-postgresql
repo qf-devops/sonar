@@ -6,7 +6,7 @@ CREATE USER sonar ;
 ALTER USER sonar WITH PASSWORD 'PASSWORD';
 CREATE DATABASE sonardb WITH ENCODING 'UTF8';
 ALTER DATABASE sonardb OWNER TO sonar;
-ALTER USER sonar SET search_path TO sonardb;
+#ALTER USER sonar SET search_path TO sonardb;
 
 # Sonar install
 apt-get install -y unzip
