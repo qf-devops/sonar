@@ -1,3 +1,8 @@
+#jdk11:
+
+sudo add-apt-repository ppa:linuxuprising/java
+sudo apt-get update
+sudo apt-get install openjdk-11-jdk
 # Postgresql install (v9.6.10)
 apt-get install -y postgresql
 su - postgres
